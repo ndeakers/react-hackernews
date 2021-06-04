@@ -1,18 +1,26 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Link from "react-router-dom";
+
+/** Story
+ * 
+ * Props:
+ *  - story {title, url}
+ * 
+ * StoryList -> Story
+ */
 
 class Story extends React.Component {
+
   constructor(props) {
     super(props);
-    console.log("StoryList Props", props);
   }
+
   render() {
     return <div>
       <Card>
         <Card.Title>{this.props.story.title}</Card.Title>
         <Card.Body>
-          <Link to={this.props.story.url}>Read Here!</Link>
+          <a href={this.props.story.url}>Read Here!</a>
         </Card.Body>
       </Card>
     </div>

@@ -1,24 +1,18 @@
-
 import './App.css';
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import StoryList from "./StoryList";
+import 'bootstrap/dist/css/bootstrap.css';
 
-class App extends React.Component() {
-
-  state = [];
-
-  async componentDidMount() {
-    const response = await axios.get(
-      `https://hn.algolia.com/api/v1/search?query=react `);
-    let hits = response.data.hits;
-    const linkInfo = hits.map(story => { story.title, story.url });
-    this.setState(linkInfo);
-  }
+/** App
+ * 
+ * App -> StoryList
+ */
+class App extends React.Component {
 
   render() {
     return (
       <div className="App" >
-        <StoryList stories={this.state} />
+        <StoryList />
       </div>
     )
   }
