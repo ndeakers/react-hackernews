@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class App extends React.Component() {
+
+  state = [];
+
+  async componentDidMount() {
+    const response = await axios.get(
+      `https://hn.algolia.com/api/v1/search?query=react `);
+    let hits = response.data.hits;
+    const linkInfo = hits.map(story => { story.title, story.url });
+    this.setState(linkInfo);
+  }
+
+  render() {
+    return (
+      <div className="App" >
+        <StoryList stories={this.state} />
+      </div>
+    )
+  }
 }
 
 export default App;
