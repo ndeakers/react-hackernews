@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import "./Story.css";
 
 /** Story
  * 
@@ -16,8 +17,8 @@ class Story extends React.Component {
   }
 
   render() {
-    return <div>
-      <Card>
+    return <div className="Story">
+      <Card className="Story-card">
         <Card.Title>{this.props.story.title}</Card.Title>
         <Card.Body>
           <a href={this.props.story.url}>Read Here!</a>

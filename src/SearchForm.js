@@ -11,17 +11,17 @@ import Button from "react-bootstrap/Button";
  * 
  */
 class SearchForm extends React.Component {
-
+  //const initialState = {term:""}
   state = {term:""}
 
-  handleChange(evt){
-    console.log("form state", this.state);
+  handleChange = (evt) => {
+    // console.log("form state", this.state);
     const { name, value } = evt.target;
     this.setState(formData => ({
       ...formData, [name]: value,}))
   }
 
-  handleSubmit(evt){
+  handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("form state submit", this.state.term);
     this.props.search(this.state.term);
@@ -31,9 +31,9 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={(evt) => this.handleSubmit(evt)} inline>
+      <Form onSubmit={this.handleSubmit} inline>
         <Form.Control value={this.state.term} 
-                      onChange={(evt) => this.handleChange(evt)} 
+                      onChange={this.handleChange} 
                       name="term" 
                       type="text" 
                       placeholder="Search" 
